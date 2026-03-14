@@ -1,0 +1,8 @@
+{
+  "name": "LuxeLive Shopping Platform",
+  "description": "A high-end live commerce framework featuring real-time auctions, creator partnerships, gamified loyalty systems, and AI-powered product insights.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

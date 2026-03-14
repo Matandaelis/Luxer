@@ -1,0 +1,121 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile information",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "avatar": { "type": "string" },
+        "points": { "type": "number" },
+        "tier": { "type": "string", "enum": ["Bronze", "Silver", "Gold", "Platinum"] },
+        "isVerified": { "type": "boolean" },
+        "role": { "type": "string", "enum": ["host", "viewer", "admin"] },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["uid", "name", "email", "role", "createdAt"]
+    },
+    "Show": {
+      "title": "Show",
+      "description": "A live stream show",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "hostId": { "type": "string" },
+        "hostName": { "type": "string" },
+        "hostAvatar": { "type": "string" },
+        "viewers": { "type": "number" },
+        "thumbnail": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["title", "hostId", "hostName", "isActive", "createdAt"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A product available in a show",
+      "type": "object",
+      "properties": {
+        "showId": { "type": "string" },
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "image": { "type": "string" },
+        "description": { "type": "string" },
+        "stock": { "type": "number" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["showId", "name", "price", "stock", "createdAt"]
+    },
+    "Auction": {
+      "title": "Auction",
+      "description": "An active auction for a product",
+      "type": "object",
+      "properties": {
+        "showId": { "type": "string" },
+        "productId": { "type": "string" },
+        "currentBid": { "type": "number" },
+        "highestBidderId": { "type": "string" },
+        "highestBidderName": { "type": "string" },
+        "endTime": { "type": "number" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["showId", "productId", "currentBid", "endTime", "isActive", "createdAt"]
+    },
+    "Bid": {
+      "title": "Bid",
+      "description": "A bid placed on an auction",
+      "type": "object",
+      "properties": {
+        "auctionId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "amount": { "type": "number" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["auctionId", "userId", "userName", "amount", "createdAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "A chat message in a show",
+      "type": "object",
+      "properties": {
+        "showId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "timestamp" }
+      },
+      "required": ["showId", "userId", "userName", "text", "createdAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "shows/{showId}": {
+      "schema": "Show",
+      "description": "Live shows"
+    },
+    "products/{productId}": {
+      "schema": "Product",
+      "description": "Products for sale"
+    },
+    "auctions/{auctionId}": {
+      "schema": "Auction",
+      "description": "Active and past auctions"
+    },
+    "bids/{bidId}": {
+      "schema": "Bid",
+      "description": "Bids on auctions"
+    },
+    "messages/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "Chat messages"
+    }
+  }
+}

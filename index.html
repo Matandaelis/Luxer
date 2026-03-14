@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeLive | High-End Live Shopping</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://esm.sh/@livekit/components-styles/dist/index.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+              serif: ['Cormorant Garamond', 'serif'],
+            },
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+            },
+            borderRadius: {
+              lg: "var(--radius)",
+              md: "calc(var(--radius) - 2px)",
+              sm: "calc(var(--radius) - 4px)",
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        :root {
+          --background: 30 20% 98%; /* Warm off-white #fdfcfb */
+          --foreground: 0 0% 10%; /* #1a1a1a */
+          --card: 0 0% 100%;
+          --card-foreground: 0 0% 10%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 0 0% 10%;
+          --primary: 36 30% 45%; /* Muted Gold #9c845c */
+          --primary-foreground: 30 20% 98%;
+          --secondary: 30 10% 90%;
+          --secondary-foreground: 0 0% 10%;
+          --muted: 30 10% 95%;
+          --muted-foreground: 0 0% 40%;
+          --accent: 36 30% 90%;
+          --accent-foreground: 36 30% 45%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 210 40% 98%;
+          --border: 30 10% 85%;
+          --input: 30 10% 85%;
+          --ring: 36 30% 45%;
+          --radius: 0rem; /* Sharp edges for luxury feel */
+        }
+ 
+        .dark {
+          --background: 0 0% 5%; /* Deep black #0d0d0d */
+          --foreground: 30 20% 98%;
+          --card: 0 0% 8%;
+          --card-foreground: 30 20% 98%;
+          --popover: 0 0% 8%;
+          --popover-foreground: 30 20% 98%;
+          --primary: 36 30% 55%; /* Lighter Gold for dark mode */
+          --primary-foreground: 0 0% 5%;
+          --secondary: 0 0% 15%;
+          --secondary-foreground: 30 20% 98%;
+          --muted: 0 0% 12%;
+          --muted-foreground: 0 0% 60%;
+          --accent: 0 0% 15%;
+          --accent-foreground: 36 30% 55%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 210 40% 98%;
+          --border: 0 0% 15%;
+          --input: 0 0% 15%;
+          --ring: 36 30% 55%;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, h5, h6, .serif { font-family: 'Cormorant Garamond', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes float-heart {
+          0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+          100% { transform: translateY(-200px) translateX(var(--random-x)) scale(1.5); opacity: 0; }
+        }
+        .animate-heart { 
+          position: absolute;
+          animation: float-heart 1.2s ease-out forwards; 
+          pointer-events: none;
+        }
+
+        @keyframes pulse-red {
+          0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.4); }
+          70% { box-shadow: 0 0 0 15px rgba(220, 38, 38, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+        .sudden-death {
+          animation: pulse-red 1s infinite;
+          border: 2px solid #dc2626 !important;
+          border-radius: 0.75rem;
+        }
+
+        @keyframes wheel-spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(1440deg); }
+        }
+        .animate-wheel {
+          animation: wheel-spin 3s cubic-bezier(0.15, 0, 0.15, 1) forwards;
+        }
+
+        @keyframes bid-flash {
+          0% { background-color: rgba(0, 102, 255, 0.2); }
+          100% { background-color: transparent; }
+        }
+        .flash-bid { animation: bid-flash 0.5s ease-out; }
+
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        .animate-shimmer {
+          background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+          background-size: 1000px 100%;
+          animation: shimmer 2s infinite linear;
+        }
+
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+
+        .glass {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "recharts": "https://esm.sh/recharts@^3.7.0",
+    "dotenv": "https://esm.sh/dotenv@^17.2.3",
+    "express": "https://esm.sh/express@^5.2.1",
+    "cors": "https://esm.sh/cors@^2.8.6",
+    "livekit-client": "https://esm.sh/livekit-client@^2.17.0",
+    "livekit-server-sdk": "https://esm.sh/livekit-server-sdk@^2.15.0",
+    "@livekit/components-react": "https://esm.sh/@livekit/components-react@^2.9.19"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background text-foreground antialiased selection:bg-primary selection:text-primary-foreground">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
